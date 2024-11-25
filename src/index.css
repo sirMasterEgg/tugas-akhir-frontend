@@ -1,3 +1,43 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities{
+    .darken{
+        /*background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));*/
+        filter: brightness(80%);
+    }
+    .profile-left-to-center{
+        left: calc(50% - 4rem);
+    }
+
+    .button-sidebar {
+        @apply w-full inline-flex items-center justify-start px-4 py-3 gap-2 hover:bg-blue-600 rounded-lg;
+    }
+}
+@layer components {
+    .container-with-ads{
+        @apply mb-16 mt-48 p-10 pt-0 lg:pt-10;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #999;
+    border-radius: 99px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
