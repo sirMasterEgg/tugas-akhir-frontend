@@ -37,7 +37,8 @@ export default function useInboxInfiniteScroll({
     isFetching,
   });
 
-  const [newPostData, setNewPostData] = useState<QuestionInbox[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [newPostData, _setNewPostData] = useState<QuestionInbox[]>([]);
 
   // useWebsocket({
   //   events: (socketInstance) => {

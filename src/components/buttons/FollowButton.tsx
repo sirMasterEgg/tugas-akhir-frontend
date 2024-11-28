@@ -71,7 +71,7 @@ export default function FollowButton({
         auth.token,
         {
           userId: userId,
-          follow: !data?.following ?? false,
+          follow: !data?.following,
         },
       ]);
     }
