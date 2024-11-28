@@ -1,0 +1,11 @@
+services:
+  tugas_akhir_frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tugas_akhir_frontend
+    working_dir: /usr/src/app
+    env_file:
+      - .env
+    ports:
+      - "4173:4173"
