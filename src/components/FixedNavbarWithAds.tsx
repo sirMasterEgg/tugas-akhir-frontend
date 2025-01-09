@@ -11,7 +11,7 @@ export default function FixedNavbarWithAds() {
       {!auth.user?.vip && (
         <div className="w-full h-28 bg-base-100 max-h-28 flex justify-center items-center border-b border-black">
           {/*<AdSense slot={"5399130281"} />*/}
-          <span className="font-bold text-2xl">IKLAN</span>
+          {/*<span className="font-bold text-2xl">IKLAN</span>*/}
           <AdSense slot={"2697321964"} />
         </div>
       )}
