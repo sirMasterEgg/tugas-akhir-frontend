@@ -1,20 +1,14 @@
 import Navbar from "../components/Navbar.tsx";
-import {
-  PiCalendar,
-  PiEnvelope,
-  PiLock,
-  PiPencil,
-  PiUser,
-} from "react-icons/pi";
-import { RouteEnum } from "../enums/route.enum.ts";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { RegisterSchema } from "../validations/register.validation.ts";
+import {PiCalendar, PiEnvelope, PiLock, PiPencil, PiUser,} from "react-icons/pi";
+import {RouteEnum} from "../enums/route.enum.ts";
+import {SubmitHandler, useForm} from "react-hook-form";
+import {zodResolver} from "@hookform/resolvers/zod";
+import {RegisterSchema} from "../validations/register.validation.ts";
 import "react-toastify/dist/ReactToastify.min.css";
-import { useMutation } from "@tanstack/react-query";
-import { registerApi } from "../apis/core/auth/register.api.ts";
-import { toast } from "react-toastify";
-import { AxiosError } from "axios";
+import {useMutation} from "@tanstack/react-query";
+import {registerApi} from "../apis/core/auth/register.api.ts";
+import {toast} from "react-toastify";
+import {AxiosError} from "axios";
 import Tooltip from "../components/Tooltip.tsx";
 import InputWithIcon from "../components/InputWithIcon.tsx";
 
@@ -48,7 +42,9 @@ const RegisterPage = () => {
       if (error instanceof AxiosError) {
         const errorMessage: string = error.response?.data.message;
         toast.error(errorMessage);
+        return
       }
+      toast.error("An error occurred. Please try again later.");
     },
   });
   const onSubmit: SubmitHandler<RegisterForm> = (data) => {
