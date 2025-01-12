@@ -1,28 +1,28 @@
 import Navbar from "../../components/Navbar.tsx";
 import NotVerified from "../../components/NotVerified.tsx";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../stores/index.store.ts";
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "../../stores/index.store.ts";
 import BottomNavBar from "../../components/BottomNavBar.tsx";
 import FixedNavbarWithAds from "../../components/FixedNavbarWithAds.tsx";
-import { useEffect, useRef, useState } from "react";
-import { PiMagnifyingGlassBold } from "react-icons/pi";
-import { IoIosClose } from "react-icons/io";
+import {useEffect, useRef, useState} from "react";
+import {PiMagnifyingGlassBold} from "react-icons/pi";
+import {IoIosClose} from "react-icons/io";
 import useQueryParams from "../../hooks/useQueryParams.ts";
 import useDebounce from "../../hooks/useDebounce.tsx";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { searchGroupApi } from "../../apis/core/search/search-group.api.ts";
+import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
+import {searchGroupApi} from "../../apis/core/search/search-group.api.ts";
 import GroupDetailsModal from "../../components/modals/GroupDetailsModal.tsx";
 import useInboxInfiniteScroll from "../../hooks/useInboxInfiniteScroll.tsx";
 import ProfilePicture from "../../components/ProfilePicture.tsx";
-import { timeAgo } from "../../helpers/calculate-time.ts";
-import { MdClose } from "react-icons/md";
-import { getSingleInboxApi } from "../../apis/core/inbox/get-single-inbox.api.ts";
-import { IoPaperPlane } from "react-icons/io5";
-import { BiMessageDetail } from "react-icons/bi";
+import {timeAgo} from "../../helpers/calculate-time.ts";
+import {MdClose} from "react-icons/md";
+import {getSingleInboxApi} from "../../apis/core/inbox/get-single-inbox.api.ts";
+import {IoPaperPlane} from "react-icons/io5";
+import {BiMessageDetail} from "react-icons/bi";
 import AttachmentCard from "../../components/post/AttachmentCard.tsx";
-import { createQuestionRepliesApi } from "../../apis/core/replies/create-question-replies.api.ts";
+import {createQuestionRepliesApi} from "../../apis/core/replies/create-question-replies.api.ts";
 import VoteButton from "../../components/buttons/VoteButton.tsx";
-import { modalFindGroupAction } from "../../slices/modal-find-group.slice.ts";
+import {modalFindGroupAction} from "../../slices/modal-find-group.slice.ts";
 
 enum Menu {
   All = "all",
@@ -209,6 +209,11 @@ const InboxPage = () => {
         },
         onError: (error) => {
           console.log(error);
+          toast.error("Failed to send reply");
+          resetReplyField();
+          queryClient.invalidateQueries({
+            queryKey: ["detailsInbox"],
+          });
         },
       }
     );
