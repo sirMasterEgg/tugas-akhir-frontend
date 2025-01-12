@@ -23,7 +23,6 @@ import AttachmentCard from "../../components/post/AttachmentCard.tsx";
 import {createQuestionRepliesApi} from "../../apis/core/replies/create-question-replies.api.ts";
 import VoteButton from "../../components/buttons/VoteButton.tsx";
 import {modalFindGroupAction} from "../../slices/modal-find-group.slice.ts";
-import {toast} from "react-toastify";
 
 enum Menu {
   All = "all",
@@ -210,7 +209,6 @@ const InboxPage = () => {
         },
         onError: (error) => {
           console.log(error);
-          toast.error("Failed to send reply");
           resetReplyField();
           queryClient.invalidateQueries({
             queryKey: ["detailsInbox"],
