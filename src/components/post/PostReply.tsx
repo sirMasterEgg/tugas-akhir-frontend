@@ -103,7 +103,6 @@ export default function PostReply({
     <div className="relative mt-10 border rounded-xl border-gray-500 pt-5 pb-2 px-5">
       <div className="absolute -top-4 left-2 rounded-full bg-primary text-primary-content pl-2 pr-4 h-[33px] flex flex-row items-center justify-center gap-2">
         {!anonymous ? (
-          <span className="h-full flex items-center">
             <div className="w-5 h-5">
               <ProfilePicture
                 url={profileImage}
@@ -111,12 +110,13 @@ export default function PostReply({
                 fontSize="text-xs"
               />
             </div>
-            {/*<img
+          /*<span className="h-full flex items-center">
+            {/!*<img
               src={profileImage}
               alt="Profile picture"
               className="object-fill w-5 h-5 rounded-full"
-            />*/}
-          </span>
+            />*!/}
+          </span>*/
         ) : null}
         <span
           className={`h-full flex items-center -translate-y-0.5 ${
