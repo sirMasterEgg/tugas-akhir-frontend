@@ -1,24 +1,20 @@
-import {
-  PiArrowFatUp,
-  PiArrowFatUpFill,
-  PiChatText,
-  PiDotsThreeOutlineFill,
-} from "react-icons/pi";
-import React, { forwardRef, useState } from "react";
+import {PiArrowFatUp, PiArrowFatUpFill, PiDotsThreeOutlineFill,} from "react-icons/pi";
+import React, {forwardRef, useState} from "react";
 import AttachmentCard from "./AttachmentCard.tsx";
-import { FileDto } from "../../apis/dto/shared/file.dto.ts";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { upvoteApi } from "../../apis/core/vote/upvote.api.ts";
-import { useSelector } from "react-redux";
-import { RootState } from "../../stores/index.store.ts";
-import { useLocation } from "react-router-dom";
-import { blockUserApi } from "../../apis/core/user/block-user.api.ts";
-import { toast } from "react-toastify";
-import { sendReportApi } from "../../apis/core/report/send-report.api.ts";
-import { AxiosError } from "axios";
-import { IoDiamondOutline } from "react-icons/io5";
+import {FileDto} from "../../apis/dto/shared/file.dto.ts";
+import {useMutation, useQueryClient} from "@tanstack/react-query";
+import {upvoteApi} from "../../apis/core/vote/upvote.api.ts";
+import {useSelector} from "react-redux";
+import {RootState} from "../../stores/index.store.ts";
+import {useLocation} from "react-router-dom";
+import {blockUserApi} from "../../apis/core/user/block-user.api.ts";
+import {toast} from "react-toastify";
+import {sendReportApi} from "../../apis/core/report/send-report.api.ts";
+import {AxiosError} from "axios";
+import {IoDiamondOutline} from "react-icons/io5";
 import WarningBadge from "../BadgeWarning.tsx";
-import { GlobalUserStatusDto } from "../../apis/dto/shared/user.dto.ts";
+import {GlobalUserStatusDto} from "../../apis/dto/shared/user.dto.ts";
+import ProfilePicture from "../ProfilePicture.tsx";
 
 type PostCardProps = {
   children: React.ReactNode;
@@ -147,11 +143,18 @@ const PostCard = forwardRef<HTMLDivElement, PostCardProps>(
           ) : (
             <>
               <span className="text-sm text-neutral-content inline-flex flex-row gap-2">
-                <img
+                <div className="w-5 h-5">
+                  <ProfilePicture
+                    url={profileImage}
+                    name={name!}
+                    fontSize="text-xs"
+                  />
+                </div>
+                {/*<img
                   src={profileImage}
                   className="object-fill w-5 h-5 rounded-full"
                   alt="Profile picture"
-                />
+                />*/}
                 <span className="-translate-y-0.5">{name}</span>
                 {isVip && (
                   <span className="h-full flex items-center translate-y-0.5">
@@ -200,9 +203,9 @@ const PostCard = forwardRef<HTMLDivElement, PostCardProps>(
           ))}
         </div>
         <div className="inline-flex flex-row gap-3">
-          <button className="btn btn-xs btn-ghost rounded-full">
+          {/*<button className="btn btn-xs btn-ghost rounded-full">
             <PiChatText className="h-4 w-4" />
-          </button>
+          </button>*/}
           <div className="flex flex-row items-center gap-1">
             <button
               onClick={() => handleUpvote(id)}

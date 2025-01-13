@@ -408,6 +408,7 @@ const InboxPage = () => {
                       <ProfilePicture
                         url={question.owner.profilePicture}
                         name={question.owner.name}
+                        fontSize="text-sm"
                       />
                     )}
                   </div>
