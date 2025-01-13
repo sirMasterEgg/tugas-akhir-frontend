@@ -1,16 +1,17 @@
-import { IoDiamondOutline } from "react-icons/io5";
-import { PiArrowFatUp, PiArrowFatUpFill } from "react-icons/pi";
-import { MdOutlineReport } from "react-icons/md";
-import { useSelector } from "react-redux";
-import { RootState } from "../../stores/index.store.ts";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { upvoteApi } from "../../apis/core/vote/upvote.api.ts";
-import { useState } from "react";
-import { sendReportApi } from "../../apis/core/report/send-report.api.ts";
-import { toast } from "react-toastify";
-import { AxiosError } from "axios";
+import {IoDiamondOutline} from "react-icons/io5";
+import {PiArrowFatUp, PiArrowFatUpFill} from "react-icons/pi";
+import {MdOutlineReport} from "react-icons/md";
+import {useSelector} from "react-redux";
+import {RootState} from "../../stores/index.store.ts";
+import {useMutation, useQueryClient} from "@tanstack/react-query";
+import {upvoteApi} from "../../apis/core/vote/upvote.api.ts";
+import {useState} from "react";
+import {sendReportApi} from "../../apis/core/report/send-report.api.ts";
+import {toast} from "react-toastify";
+import {AxiosError} from "axios";
 import WarningBadge from "../BadgeWarning.tsx";
-import { GlobalUserStatusDto } from "../../apis/dto/shared/user.dto.ts";
+import {GlobalUserStatusDto} from "../../apis/dto/shared/user.dto.ts";
+import ProfilePicture from "../ProfilePicture.tsx";
 
 type PostReplyProps = {
   name: string;
@@ -103,11 +104,18 @@ export default function PostReply({
       <div className="absolute -top-4 left-2 rounded-full bg-primary text-primary-content pl-2 pr-4 h-[33px] flex flex-row items-center justify-center gap-2">
         {!anonymous ? (
           <span className="h-full flex items-center">
-            <img
+            <div className="w-5 h-5">
+              <ProfilePicture
+                url={profileImage}
+                name={name!}
+                fontSize="text-xs"
+              />
+            </div>
+            {/*<img
               src={profileImage}
               alt="Profile picture"
               className="object-fill w-5 h-5 rounded-full"
-            />
+            />*/}
           </span>
         ) : null}
         <span
